@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/png" href="<%= image_path("/assets/favicon.png") %>" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+    <title>DevAssignment</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   
+    <%= stylesheet_link_tag "global" %>
+    <%= stylesheet_link_tag "table_related" %>
+  
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <%= render :partial=> "/layouts/common_partial/navbar"%>
+
+      <div class="container-fluid">
+          <div class="row flex-xl-nowrap">
+            <main class="col-12 col-md-12 col-xl-12 py-md-3 pl-md-5 bd-content">
+                <%= yield %>
+            </main>
+            </div>  
+         </div>
+      </div>
+    </body>
+
+</html>

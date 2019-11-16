@@ -1,0 +1,64 @@
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+          <%= form_with(model: product, local: true, validate: true) do |form| %>
+
+
+          <%= render :partial=> "/layouts/common_partial/error_msg", locals: { localObj: product }%>
+
+        
+        
+          <%= form_for(product) do |f| %>
+            
+
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
+                <div class="form-group">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, autofocus: true, class: "form-control"%>
+                </div>
+            
+                <div class="form-group">
+                  <%= f.label :sku_code %>
+                  <%= f.text_field :sku_code , class: "form-control" ,validate: true %>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 divFixHead">
+                <% if product.product_warehouses.present? %>
+                <h5>Warehouses:-</h5><hr>
+                
+                <%= f.fields_for :product_warehouses, f.object.product_warehouses do |pw| %>
+                <%= pw.object.warehouse.name %>:-<br><br>
+                <div class="row">
+                      <div class="col col-lg-4 col-sm-4 col-xs-4 col-md-4">
+                        <%= pw.label :item_count%>
+                        <%= pw.text_field :item_count, autofocus: true, class: "form-control"%>
+                      </div>
+                      <div class="col col-lg-4 col-sm-4 col-xs-4 col-md-4">
+                        <%= pw.label "Threshold level" %>
+                        <%= pw.text_field :low_item_threshold, autofocus: true, class: "form-control"%>
+                      </div>
+                  </div>
+                  <br>
+                  <% end %>
+                  <% end %>
+                </div>  
+            </div>
+            
+
+            <%= form.submit "Update" ,class: "btn btn-primary" %>
+            <%= link_to 'Back', products_path ,class: "btn btn-primary" %>
+          
+            
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+</div>        
+
+
+
+
+
