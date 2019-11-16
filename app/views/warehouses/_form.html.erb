@@ -3,7 +3,7 @@
       <div class="col-6">
           <%= form_with(model: warehouse, local: true, validate: true) do |form| %>
               
-              <%= render :partial=> "/layouts/common_partial/error_msg", locals: { localObj: warehouse }%>
+              <%= render :partial=> "/layouts/common_partial/error_msg", locals: { localObj: warehouse ,insideApp: true }%>
 
               <div class="actions">
 
@@ -30,6 +30,7 @@
 
                 <% end %>
                 <%= form.submit "Create Warehouse",class: "btn btn-primary" %>
+                <%= link_to 'Back', products_path ,class: "btn btn-primary" %>
               </div>
             <% end %>
 

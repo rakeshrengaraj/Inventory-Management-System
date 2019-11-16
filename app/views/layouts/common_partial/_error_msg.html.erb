@@ -1,9 +1,19 @@
-<% if localObj.errors.any? %>
-    <div class="alert alert-danger alert-dismissible fade show">
+<% if insideApp %>
+    <% if localObj.errors.any? %>
+        <div class="alert alert-danger alert-dismissible fade show">
+            <strong>Error!</strong><br>
+            <% localObj.errors.full_messages.each_with_index do |message, index| %>
+                <span><%= index +1 %>-<%= message %></span><br>
+            <% end %>
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+    <% end %>
+<% else %>
+    <% if flash[:alert] %>          
+        <div class="alert alert-danger alert-dismissible fade show">
         <strong>Error!</strong><br>
-        <% localObj.errors.full_messages.each_with_index do |message, index| %>
-            <span><%= index +1 %>-<%= message %></span><br>
-        <% end %>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-    </div>
-<% end %>
+            <%= flash[:alert] %>
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+    <% end %>
+<% end %>    

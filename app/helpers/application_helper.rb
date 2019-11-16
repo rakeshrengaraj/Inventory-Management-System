@@ -9,6 +9,12 @@ module ApplicationHelper
     end    
 
 
-    
+    def adminAccess(user)
+        if (user.email == "admin@demo.com")
+          return "d-block"
+        else
+           return "d-none" 
+        end           
+    end    
 
 end

@@ -5,7 +5,7 @@
           <%= form_with(model: product, local: true, validate: true) do |form| %>
 
 
-          <%= render :partial=> "/layouts/common_partial/error_msg", locals: { localObj: product }%>
+          <%= render :partial=> "/layouts/common_partial/error_msg", locals: { localObj: product, insideApp: true }%>
 
         
         
